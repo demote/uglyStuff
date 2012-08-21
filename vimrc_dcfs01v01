@@ -1,0 +1,116 @@
+" **********************
+"" vimrc
+"" demote
+"" 2011.4.4
+" **********************
+
+"Set mapleader
+let mapleader = ","
+"Fast reloading of the .vimrc
+"map <silent> <leader>ss :source ~/.vimrc<cr>
+"Fast editing of .vimrc
+"map <silent> <leader>ee :e ~/.vimrc<cr>
+"When .vimrc is edited, reload it
+"autocmd! bufwritepost .vimrc source ~/.vimrc 
+
+
+"when auto-complete, list all possible options
+set wildmenu
+"set wildmode=longest:full
+
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+set nobackup		" do not keep a backup file, use versions instead
+set history=50		" keep 50 lines of command line history
+set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
+set number
+set tabstop=2
+set expandtab
+set linebreak
+set hlsearch
+
+"fold method
+"set foldmethod=syntax
+"set foldlevel=100       " Don't autofold anything (but I can still fold manually
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+
+syn on
+filetype plugin indent on
+
+set cindent
+set autoindent
+set smartindent
+set ai!
+
+
+"auto-shift width
+set shiftwidth=2
+
+" status line
+set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
+set laststatus=2
+set ruler
+
+
+" map key 
+"F2--> no highlight search F3-->move cursor to another window
+:nmap <F3> :nohls<cr>
+:nmap <F2> <C-W>w
+:imap <F2> <ESC><F2>
+":inoremap <C-L> <ESC>la
+":imap <C-H> <ESC>ha
+":imap <C-J> <ESC>ja
+":imap <C-K> <ESC>ka
+:nmap <F5> :tabprevious<cr>
+:nmap <F6> :tabnext<cr>
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
+" vimgdb
+":set previewheight=12		" set gdb window initial height
+":run macros/gdb_mappings.vim	" source key mappings listed in this document
+":set asm=0				" don't show any assembly stuff
+":set gdbprg=/usr/bin/gdb
+
+
+" color scheme 
+colorscheme gdesert
+set t_Co=256
+set cursorline
+hi CursorLine  cterm=bold
+
+
+highlight Normal guifg=#cccccc guibg=#3f3f3f ctermfg=252 ctermbg=237
+highlight Comment guifg=#7f7f7f ctermfg=244
+highlight LineNr guifg=#7f7f7f guibg=#464646 ctermfg=244 ctermbg=238
+
+highlight Pmenu guifg=#c0c0c0 guibg=#404080 ctermfg=250 ctermbg=60
+highlight PmenuSel guifg=#c0c0c0 guibg=#2050d0 ctermfg=250 ctermbg=26
+highlight PmenuSbar guifg=blue guibg=darkgray ctermfg=21 ctermbg=248
+highlight PmenuThumb guifg=#c0c0c0 ctermfg=250
+
+set nocompatible
+set backspace=indent,eol,start
+
+" 插入匹配括号
+"inoremap ( ()<LEFT>
+"inoremap [ []<LEFT>
+inoremap { {<RETURN>}<UP><ESC>o
+
+
+
+" *****************
+" * end of vimrc  *
+" *****************
+
