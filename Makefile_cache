@@ -1,0 +1,20 @@
+CC = gcc
+CFLAGS = -Wall
+TARGET = cache_simul
+OBJECTS = cache_simul.o lru_cache_policy.o min_cache_policy_heap.o err_handle.o murmur3.o
+SRCS = ${OBJECTS:%o=%c}
+
+all: depend $(TARGET)
+
+depend : $(SRCS) 
+	$(CC) $(CFLAGS) -MM $(SRCS) > .depend
+
+-include .depend
+
+$(TARGET) : $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $(TARGET)
+
+clean :
+	rm -rf $(OBJECTS)
+	rm -rf $(TARGET)
+	rm -rf .depend
